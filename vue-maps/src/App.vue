@@ -1,44 +1,8 @@
 <template>
   <div id="app">
-    <div class="ymap-container">
-      <yandex-map
-        :coords="centerCoords"
-        :zoom="8"
-        @click="onClick">
-        <ymap-marker
-          marker-id="1"
-          marker-type="Placemark"
-          :coords="centerCoords"
-          :balloon-template="balloonTemplate"
-        ></ymap-marker>
-        <ymap-marker
-          marker-id="2"
-          marker-type="Placemark"
-          :coords="coords1"
-          :balloon-template="balloonTemplate"
-        ></ymap-marker>
-        <ymap-marker
-          marker-id="3"
-          marker-type="Placemark"
-          :coords="coords2"
-          :balloon-template="balloonTemplate"
-        ></ymap-marker>
-        <ymap-marker
-          marker-id="4"
-          marker-type="Placemark"
-          :coords="coords3"
-          :balloon-template="balloonTemplate"
-        ></ymap-marker>
-      </yandex-map>
-    </div>
-    <div class="t-gis">
-      <t-gis-map
-        :center="[54.98, 82.89]"
-        :marker="[54.98, 82.89]"
-        :styles="{width: '300px', height: '200px'}"
-        :zoom="16"
-      ></t-gis-map>
-    </div>
+    <YMap />
+    <br>
+    <TGis />
   </div>
 </template>
 
@@ -46,32 +10,19 @@
 // https://vue-yandex-maps.github.io/guide/Map.html#attributes
 // https://yandex.ru/dev/maps/jsapi/doc/2.1/dg/concepts/geoobjects.html
 
-import {yandexMap, ymapMarker} from "vue-yandex-maps";
-import tGisMap from './components/tGisMap'
+import YMap from "./components/YMap/YMap";
+import TGis from "./components/TGis/TGis";
 
 export default {
   name: 'app',
-  components: { yandexMap, ymapMarker, tGisMap },
+  components: { TGis, YMap },
   data: () => ({
     centerCoords: [44.95806, 34.11], // Simf
     coords1: [44.9, 34],
     coords2: [45, 34],
     coords3: [44.9, 34.1],
-  }),
-  computed: {
-    balloonTemplate() {
-      return `
-        <h1 class="red">Hi, everyone!</h1>
-        <p>I am here: ${this.centerCoords}</p>
-        <img src="http://via.placeholder.com/350x150">
-      `
-    }
-  },
-  methods: {
-    onClick(e) {
-      this.centerCoords = e.get('coords');
-    }
-  }
+    comboCoords: [[44.9, 34], [45, 34], [44.9, 34.1]]
+  })
 }
 </script>
 
@@ -83,13 +34,5 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
-.ymap-container {
-  margin: 0 auto;
-  height: 600px;
-  width: 950px;
-}
-.red {
-  color: red;
 }
 </style>

@@ -6,11 +6,11 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "run dev",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
+    "@2gis/mapgl-clusterer": "^2.4.3",
     "2gis-maps": "^3.7.0",
     "vue": "^2.5.11",
     "vue-yandex-maps": "^0.11.4"
