@@ -10,6 +10,7 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
+    "@2gis/mapgl": "^1.22.0",
     "@2gis/mapgl-clusterer": "^2.4.3",
     "2gis-maps": "^3.7.0",
     "vue": "^2.5.11",

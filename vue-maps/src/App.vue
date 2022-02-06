@@ -1,14 +1,17 @@
 <template>
   <div id="app">
-    <YMap />
+    <YMap :coords="coords" />
     <br>
-    <TGis />
+    <TGis :coords="coords" />
   </div>
 </template>
 
 <script>
-// https://vue-yandex-maps.github.io/guide/Map.html#attributes
-// https://yandex.ru/dev/maps/jsapi/doc/2.1/dg/concepts/geoobjects.html
+// YMap https://vue-yandex-maps.github.io/guide/Map.html#attributes
+// 2Gis https://yandex.ru/dev/maps/jsapi/doc/2.1/dg/concepts/geoobjects.html
+// -------------------
+// gMap https://www.npmjs.com/package/gmap-vue
+// gMap https://diegoazh.github.io/gmap-vue/#get-an-api-key-from-google
 
 import YMap from "./components/YMap/YMap";
 import TGis from "./components/TGis/TGis";
@@ -16,13 +19,17 @@ import TGis from "./components/TGis/TGis";
 export default {
   name: 'app',
   components: { TGis, YMap },
-  data: () => ({
-    centerCoords: [44.95806, 34.11], // Simf
-    coords1: [44.9, 34],
-    coords2: [45, 34],
-    coords3: [44.9, 34.1],
-    comboCoords: [[44.9, 34], [45, 34], [44.9, 34.1]]
-  })
+  data: () => (
+    {
+      coords: {
+        center: [44.95806, 34.11], // Simf
+        one: [44.9, 34],
+        two: [45, 34],
+        three: [44.9, 34.1],
+        arr: [[44.9, 34], [45, 34], [44.9, 34.1], [44.95806, 34.11]]
+      }
+  }
+  )
 }
 </script>
 
